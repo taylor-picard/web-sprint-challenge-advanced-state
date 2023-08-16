@@ -8,12 +8,13 @@ function wheel(state = initialWheelState, action) {
     case CLOCKWISE:
       return{
         ...state,
-        state: 1
-      }
+        state: state + 1
+        
+      } 
     case COUNTERCLOCKWISE:
       return{
         ...state,
-        state: 1
+        state: state - 1
       }
     default: return(state);
   }
@@ -62,7 +63,7 @@ function form(state = initialFormState, action) {
   switch(action.type) {
     case INPUT_CHANGE:
       return{
-        
+
       }
     case RESET_FORM:
       return{

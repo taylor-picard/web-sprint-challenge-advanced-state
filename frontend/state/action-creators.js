@@ -41,6 +41,7 @@ export function resetForm() {
 export function fetchQuiz() {
   return function (dispatch) {
     // First, dispatch an action to reset the quiz state (so the "Loading next quiz..." message can display)
+    
     // On successful GET:
     // - Dispatch an action to send the obtained quiz to its state
   }

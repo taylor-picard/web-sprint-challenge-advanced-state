@@ -19,9 +19,7 @@ const initialQuizState = null
 function quiz(state = initialQuizState, action) {
   switch(action.type) {
     case SET_QUIZ:
-      return {
-
-      }
+      return action.payload
     default: return(state);
   }
   
@@ -31,9 +29,7 @@ const initialSelectedAnswerState = null
 function selectedAnswer(state = initialSelectedAnswerState, action) {
   switch(action.type) {
     case SELECT_ANSWER:
-      return{
-
-      }
+      return action.payload
     default: return(state);
   }
 }

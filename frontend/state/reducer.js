@@ -6,16 +6,11 @@ const initialWheelState = 0
 function wheel(state = initialWheelState, action) {
   switch(action.type) {
     case CLOCKWISE:
-      return{
-        ...state,
-        state: state + 1
-        
-      } 
+      return action.payload
+
     case COUNTERCLOCKWISE:
-      return{
-        ...state,
-        state: state - 1
-      }
+      return action.payload
+  
     default: return(state);
   }
 }

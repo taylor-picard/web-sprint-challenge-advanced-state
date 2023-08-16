@@ -5,10 +5,18 @@ import { connect } from 'react-redux';
 export function Wheel(props) {
   
   const handleClockwise = () => {
-    (moveClockwise());
+    if(props.index === 5){
+      props.moveClockwise(0);
+    }else{
+      props.moveClockwise(props.index+1);
+    }
   }
   const handleCounterCW = () => {
-   (moveCounterClockwise());
+    if(props.index === 0){
+      props.moveCounterClockwise(5);
+    }else{
+      props.moveCounterClockwise(props.index-1);
+    }
   }
   return (
     <div id="wrapper">
@@ -21,8 +29,8 @@ export function Wheel(props) {
         <div className={`cog ${props.index === 5 ? 'active': ''}`} style={{ "--i": 5 }}>{props.index === 5 ? 'B' : ''}</div>{/* --i is a custom CSS property, no need to touch that nor the style object */}
       </div>
       <div id="keypad">
-        <button id="counterClockwiseBtn" onClick={()=>handleCounterCW}>Counter clockwise</button>
-        <button id="clockwiseBtn" onClick={()=>handleClockwise}>Clockwise</button>
+        <button id="counterClockwiseBtn" onClick={handleCounterCW}>Counter clockwise</button>
+        <button id="clockwiseBtn" onClick={handleClockwise}>Clockwise</button>
       </div>
     </div>
   )
@@ -33,4 +41,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Wheel)
+export default connect(mapStateToProps, {moveClockwise, moveCounterClockwise})(Wheel)

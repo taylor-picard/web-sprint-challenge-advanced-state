@@ -9,12 +9,12 @@ export const SET_QUIZ = 'SET_QUIZ';
 export const INPUT_CHANGE = 'INPUT_CHANGE';
 export const RESET_FORM = 'RESET_FORM';
 
-export function moveClockwise() {
-  return({type: CLOCKWISE});
+export function moveClockwise(newIndex) {
+  return({type: CLOCKWISE, payload: newIndex});
  }
 
-export function moveCounterClockwise() {
-  return({type:COUNTERCLOCKWISE});
+export function moveCounterClockwise(newIndex) {
+  return({type:COUNTERCLOCKWISE, payload: newIndex});
  }
 
 export function selectAnswer() {

@@ -17,16 +17,16 @@ export function moveCounterClockwise(newIndex) {
   return({type:COUNTERCLOCKWISE, payload: newIndex});
  }
 
-export function selectAnswer() {
-  return({type:SELECT_ANSWER});
+export function selectAnswer(answerState) {
+  return({type:SELECT_ANSWER, payload: answerState});
  }
 
 export function setMessage() {
   return({type:SET_MESSAGE});
  }
 
-export function setQuiz() {
-  return({type:SET_QUIZ});
+export function setQuiz(quizState) {
+  return({type:SET_QUIZ, payload: quizState});
  }
 
 export function inputChange() {
@@ -41,8 +41,15 @@ export function resetForm() {
 export function fetchQuiz() {
   return function (dispatch) {
     // First, dispatch an action to reset the quiz state (so the "Loading next quiz..." message can display)
+    dispatch(setQuiz(null));
+    axios.get('http://localhost:9000/api/quiz/next')
+    .then(res => {
+      dispatch(setQuiz(res.data))
+      }
+    )
+    .catch(err => console.log(err))
+       
     
-    // On successful GET:
     // - Dispatch an action to send the obtained quiz to its state
   }
 }

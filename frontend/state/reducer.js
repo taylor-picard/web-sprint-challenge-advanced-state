@@ -38,9 +38,7 @@ const initialMessageState = ''
 function infoMessage(state = initialMessageState, action) {
   switch(action.type) {
     case SET_MESSAGE:
-      return{
-
-      }
+      return action.payload
     default: return(state);
   }
 }

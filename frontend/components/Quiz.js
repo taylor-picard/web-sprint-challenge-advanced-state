@@ -7,13 +7,9 @@ export function Quiz(props) {
   const ans1 = props.quiz ? props.quiz.answers[1] : null;
   const disabled = props.selectedAnswer ? false : true;
 
-  if(!props.quiz){
     useEffect(()=>{ 
     props.fetchQuiz()}, []);
-  }
-  
 
-  
   return (
     <div id="wrapper">
       {// quiz already in state? Let's use that, otherwise render "Loading next quiz..."

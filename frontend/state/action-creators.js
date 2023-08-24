@@ -40,7 +40,7 @@ export function resetForm() {
 // ❗ Async action creators
 export function fetchQuiz() {
   return function (dispatch) {
-    dispatch(setQuiz(null));
+    // dispatch(setQuiz(null));
     axios.get('http://localhost:9000/api/quiz/next')
     .then(res => {
       dispatch(setQuiz(res.data))
@@ -56,9 +56,10 @@ export function postAnswer(quizId, answerId) {
       .then(res => {
         dispatch(selectAnswer(null))
         dispatch(setMessage(res.data.message))
+        dispatch(setQuiz(null));
+        dispatch(fetchQuiz())
       })
       .catch(err => console.log(err))
-      .finally(dispatch(fetchQuiz()))
   }
 }
 export function postQuiz(questionText, rightAnswer, wrongAnswer) {
